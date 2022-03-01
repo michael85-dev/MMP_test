@@ -3,15 +3,17 @@ package com.hmh.mmp.dto.balance;
 import com.hmh.mmp.entity.BalanceEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BalanceDetailDTO {
+public class BalanceDetailDTO extends BalanceSaveDTO {
     private Long balanceId;
 
     private Long cashId; // 연결된 현금 관련 계좌

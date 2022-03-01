@@ -14,12 +14,26 @@
         <div class="col-1"></div>
         <div class="col-10">
             <form action="/bank/save" method="post" enctype="multipart/form-data">
-                <input type="hidden" th:field="*{session['loginId']}" readonly> <br><!-- 고안 필요 -->
-                <input type="hidden" th:field="*{bsave.memberId}" th:value="" readonly> <br>
-                계좌 명 : <input type="text" th:field="*{bsave.bankName}"> <br>
-                메모 : <textarea th:field="*{bsave.bankMemo}" rows="3"></textarea> <br>
-                초기 자금 : <input th:field="*{bsave.totalAsset}"> <br>
-                <input type="submit" value="계좌 생성"><input type="submit" value="돌아가기" onclick="bToIndex()">
+                <fieldset>
+                    <legend>은행 계좌 정보</legend>
+                    <div class="text-center">
+                        <input type="hidden" th:field="*{session['loginId']}" readonly> <br><!-- 고안 필요 -->
+                        <input type="hidden" th:field="*{bsave.memberId}" th:value="" readonly> <br>
+
+                        <label for="bankName">계좌 명</label>
+                        <input type="text" th:field="*{bsave.bankName}"> <br>
+
+                        <label for="bankMemo">메모</label>
+                        <textarea th:field="*{bsave.bankMemo}" rows="3"></textarea> <br>
+
+                        <label for="totalAsset">초기 금액</label>
+                        <input th:field="*{bsave.totalAsset}"> <br>
+                    </div>
+
+                    <div class="text-end">
+                        <input type="submit" value="계좌 생성"><input type="submit" value="돌아가기" onclick="bToIndex()">
+                    </div>
+                </fieldset>
             </form>
         </div>
         <div class="col-1"></div>

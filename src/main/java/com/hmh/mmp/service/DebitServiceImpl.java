@@ -105,13 +105,13 @@ public class DebitServiceImpl implements DebitService {
         debitSaveDTO.setAccount(account);
 
         // 전체 내역 추가 하기 - 사용 관련은 기본적으로 마이너스로 추가. -> 카드 내용에 해당 내역 반영
-        Long totalAsset = cardEntity.getTotalAsset();
+        Double totalAsset = cardEntity.getTotalAsset();
         totalAsset = totalAsset - minusAsset;
         cardEntity.setTotalAsset(totalAsset);
         crr.save(cardEntity);
 
         // 은행 과년하여 반영하기
-        Long bankUseAsset = bankEntity.getTotalAsset();
+        Double bankUseAsset = bankEntity.getTotalAsset();
         bankUseAsset = bankUseAsset - minusAsset;
         bankEntity.setTotalAsset(bankUseAsset);
         // 해당 변경점 업데이트 하기

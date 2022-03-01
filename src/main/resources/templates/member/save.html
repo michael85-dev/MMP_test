@@ -16,12 +16,20 @@
         <div class="col-1"></div>
         <div class="col-10">
             <form action="/member/save" method="post" enctype="multipart/form-data" th:object="${msave}">
-                <input type="text" th:field="*{memberEmail}" placeholder="가입하실 이메일을 입력하세요"> <br>
+                <input type="email" th:field="*{memberEmail}" placeholder="가입하실 이메일을 입력하세요">@
+                <select id="emailCheck">
+                    <option disabled>선택하세요</option>
+                    <option value="gmail.com">gamil.com</option>
+                    <option value="kakao.com">kakao.com</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option id="typing">직접입력</option> <input type="hidden">
+                </select> <br>
                 <input type="password" th:field="*{memberPassword}" placeholder="사용할 비밀번호를 입력하세요"> <br>
                 <input type="password" id="pwCheck" placeholder="비밀번호를 다시 입력해주세요"> <br>
                 <input type="text" th:field="*{memberName}" placeholder="이름을 입력하세요"> <br>
                 <input type="text" th:field="*{memberNickName}" placeholder="닉네임을 입력하세요"> <br>
-                <input type="text" th:field="*{memberPhone}" placeholder="000-0000-0000"> <br>
+                <input type="tel" th:field="*{memberPhone}" placeholder="000-0000-0000"> <br>
                 <textarea rows="5" th:field="*{memberMemo}"></textarea> <br>
                 <input type="file" th:field="*{memberPhoto}" value="저장"> <br><!-- 파일 관련 설정 -->
                 <input type="submit" value="회원가입">

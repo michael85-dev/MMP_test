@@ -9,21 +9,30 @@
 <header>
 
 </header>
-<main>
+<section>
     <div class="row">
-        <div class="col-1">
+        <div class="col-1"></div>
         <div class="col-10">
             <form action="/member/login" method="post" enctype="multipart/form-data" th:object="${mlogin}">
-                <input type="text" th:field="*{memberEmail}" placeholder="아이디">
-                <input type="password" th:field="*{memberPassword}" placeholder="비밀번호">
-                <input type="submit" value="로그인"> <button onclick="bToMain()">돌아가기</button><!-- 체크하는 것에 대해서 제대로 구상이 되어 있는가? -->
+                <fieldset>
+                    <legend>로그인</legend>
+                    <input type="text" th:field="*{memberEmail}" placeholder="아이디" auto ??>@ <!-- 커서 자동으로 입력되세 설정하기. -->
+                    <select>
+                        <option disabled>선택하세요</option>
+                        <option value="gmail.com">gamil.com</option>
+                        <option value="kakao.com">kakao.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option id="typing">직접입력</option> <input type="hidden">
+                    </select> <br>
+                    <input type="password" th:field="*{memberPassword}" placeholder="비밀번호"> <br>
+                    <input type="submit" value="로그인"><input type="reset" value="다시입력"> <button onclick="bToMain()">돌아가기</button> <br><!-- 체크하는 것에 대해서 제대로 구상이 되어 있는가? -->
+                </fieldset>
             </form>
         </div>
-        <div class="col-1">
-
-        </div>
+        <div class="col-1"></div>
     </div>
-</main>
+</section>
 <footer>
     <!-- 해당 부분 전체적으로 수정해야함. 아에 안맞음. -->
     <div class="container bg-light">

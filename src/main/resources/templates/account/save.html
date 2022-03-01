@@ -18,24 +18,31 @@
             <form action="/account/save" method="post" enctype="multipart/form-data" id="updateForm" th:object="${accountsave}">
                 <fieldset> <!-- 폼 안에 구분 하기 위해서 만드는 것 -->
                     <legend>계좌 정보 입력</legend>
-                    <p>회원 번호 : <input type="text" name="memberId" th:value="${memberId}" readonly> </p>
-                    계좌 번호 : <input type="text" name="bankId" id="bankId" th:value="${bankId}" readonly> <br>
-                    계좌 이름 : <input type="text" name="bankName" th:value="${bankName}" readonly> <br><!-- 현재 NotBlank 때문에 그런 것으로 보임. 해당 부분은 내용이 없어서 발생하는 것인지 여부 확인 필요 -->
+                    <p><label for="memberId">회원번호</label><input type="text" name="memberId" th:value="${memberId}" readonly> </p>
 
-                    사용일 : <input type="date" th:field="*{date}"> <br> <!-- 달력으로 표시하는 방법을 사용해야함. -->
-                    사용명 : <input type="text" th:field="*{accountName}"> <br>
-                    내역 :
+                    <label for="bankId">은행번호</label><input type="text" name="bankId" id="bankId" th:value="${bankId}" readonly> <br>
+
+                    <label for="date">날짜</label><input type="date" th:field="*{date}"> <br> <!-- 달력으로 표시하는 방법을 사용해야함. -->
+
+                    <label for="bankName">계좌이름</label><input type="text" name="bankName" th:value="${bankName}" readonly> <br><!-- 현재 NotBlank 때문에 그런 것으로 보임. 해당 부분은 내용이 없어서 발생하는 것인지 여부 확인 필요 -->
+
+                    <label for="accountName">사용내역</label><input type="text" th:field="*{accountName}"> <br>
+
+                    <label for="moneyCheck">내역</label>
                     <select id="moneyCheck">
                         <option value="+">수입</option>
                         <option value="-">지출</option>
                     </select> <!-- 해당 부분을 선택할 수 있게 값으로 줘야 함. 해당 function 을 하는 방법 고안 필요 -->
                     <input type="hidden"> <br>
-                    메모 : <textarea th:field="*{accountMemo}" rows="5"></textarea> <br>
-                    영수증 : <input type="file"> <br>
 
-                    <input type="submit" value="저장">
-                    <input type="reset" value="다시 작성">
-                    <button onclick="bToMain()">돌아가기</button>
+                    <label for="accountMemo">메모</label><textarea th:field="*{accountMemo}" rows="5"></textarea> <br>
+                    <label for="accountPhoto">영수증</label><input type="file" th:field="*{accountPhoto}"> <br>
+
+                    <div class="text-end">
+                        <input type="submit" value="저장">
+                        <input type="reset" value="다시 작성">
+                        <button onclick="bToMain()">돌아가기</button>
+                    </div>
                 </fieldset>
             </form>
         </div>

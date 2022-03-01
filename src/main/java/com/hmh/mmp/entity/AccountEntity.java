@@ -36,8 +36,8 @@ public class AccountEntity extends BaseEntity {
 
     private LocalDateTime calTime;
     private LocalDate   calDate;
-    private Long plusAsset;
-    private Long minusAsset;
+    private Double plusAsset;
+    private Double minusAsset;
     private String accountName; // 후에 고민해보기
     private String accountPhotoName;
     private String accountMemo;

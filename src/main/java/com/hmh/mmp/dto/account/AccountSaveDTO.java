@@ -19,8 +19,8 @@ public class AccountSaveDTO{
     private Long memberId;
 
     private LocalDate date;
-    private Long plusAsset;
-    private Long minusAsset;
+    private double plusAsset;
+    private double minusAsset;
     private String accountName;
     private MultipartFile accountPhoto;
     private String accountPhotoName;

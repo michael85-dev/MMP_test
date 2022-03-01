@@ -21,12 +21,12 @@ public class CreditSaveDTO extends RecoredYMD {
     private MultipartFile creditPhoto;
     private String creditPhotoName; // 사진명
     private String creditMemo;
-    private Long minusAsset; // 지출
-    private Double rate; // 할부이자.
+    private double minusAsset; // 지출
+    private double rate; // 할부이자.
     private int month; // 할부
 
-    private Double creditGet; // 캐쉬백
-    private Double creditPercents;
+    private double creditGet; // 캐쉬백
+    private double creditPercents;
 
     private String firstList; // 대분류
     private String secondList; // 중뷴류

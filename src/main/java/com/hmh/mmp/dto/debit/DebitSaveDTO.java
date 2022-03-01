@@ -29,10 +29,10 @@ public class DebitSaveDTO extends RecoredYMD {
     private String debitName; //내역명
     private MultipartFile debitPhoto;
     private String debitPhotoName; // 영수증
-    private Long minusAsset; // 지출
+    private double minusAsset; // 지출
     private String debitMemo; // 내역
-    private Double debitGet; // 할인
-    private Double debitPercent; // 퍼센트 할인
+    private double debitGet; // 할인
+    private double debitPercent; // 퍼센트 할인
 
     private String account; // 계좌
 

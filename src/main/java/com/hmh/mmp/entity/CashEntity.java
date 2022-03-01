@@ -23,7 +23,7 @@ public class CashEntity extends BaseEntity {
     private String cashMemo;
 
     private String cashPhotoName;
-    private Long totalAsset;
+    private Double totalAsset;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

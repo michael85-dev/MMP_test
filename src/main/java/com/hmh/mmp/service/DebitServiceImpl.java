@@ -85,6 +85,17 @@ public class DebitServiceImpl implements DebitService {
             debitSaveDTO.setDebitPhotoName(debitPhotoName);
         }
 
+        double minusAsset = debitSaveDTO.getMinusAsset();
+
+        if ((Double)debitSaveDTO.getDebitGet() == null) { // 할인율 관련
+            minusAsset = (debitSaveDTO.getMinusAsset() - (debitSaveDTO.getMinusAsset() * debitSaveDTO.getDebitPercent() / 100)); // 할인된 금액 반영해서 넣는것.
+
+            debitSaveDTO.setMinusAsset(minusAsset);
+        } else { // 할인액 관련
+            minusAsset = (debitSaveDTO.getMinusAsset() - debitSaveDTO.getDebitGet());
+            debitSaveDTO.setMinusAsset(minusAsset);
+        }
+
         // 사용되는 계정 정보와 카드 정보 가지고 오기.
         BankEntity bankEntity = br.findById(debitSaveDTO.getBankId()).get();
         CardEntity cardEntity = crr.findById(debitSaveDTO.getCardId()).get();
@@ -95,13 +106,13 @@ public class DebitServiceImpl implements DebitService {
 
         // 전체 내역 추가 하기 - 사용 관련은 기본적으로 마이너스로 추가. -> 카드 내용에 해당 내역 반영
         Long totalAsset = cardEntity.getTotalAsset();
-        totalAsset = totalAsset - debitSaveDTO.getMinusAsset();
+        totalAsset = totalAsset - minusAsset;
         cardEntity.setTotalAsset(totalAsset);
         crr.save(cardEntity);
 
         // 은행 과년하여 반영하기
         Long bankUseAsset = bankEntity.getTotalAsset();
-        bankUseAsset = bankUseAsset - debitSaveDTO.getMinusAsset();
+        bankUseAsset = bankUseAsset - minusAsset;
         bankEntity.setTotalAsset(bankUseAsset);
         // 해당 변경점 업데이트 하기
         br.save(bankEntity);
@@ -138,16 +149,27 @@ public class DebitServiceImpl implements DebitService {
         // 계정 정보 가져 오기
         BankEntity bankEntity = br.findById(debitUpdateDTO.getBankId()).get();
         String bankAccount = bankEntity.getBankName();
-        Long totalAsset = bankEntity.getTotalAsset();
-        totalAsset = totalAsset - debitUpdateDTO.getMinusAsset();
+
+        double minusAsset = debitUpdateDTO.getMinusAsset();
+        if ((Double)debitUpdateDTO.getDebitGet() == null) { // 할인율 관련
+            minusAsset = (debitUpdateDTO.getMinusAsset() - (debitUpdateDTO.getMinusAsset() * debitUpdateDTO.getDebitPercent() / 100)); // 할인된 금액 반영해서 넣는것.
+
+            debitUpdateDTO.setMinusAsset(minusAsset);
+        } else { // 할인액 관련
+            minusAsset = (debitUpdateDTO.getMinusAsset() - debitUpdateDTO.getDebitGet());
+            debitUpdateDTO.setMinusAsset(minusAsset);
+        }
+
+        Double totalAsset = bankEntity.getTotalAsset();
+        totalAsset = totalAsset - minusAsset;
         bankEntity.setTotalAsset(totalAsset);
         // 반영 내역 집어 넣기. (연동된 계좌에)
         br.save(bankEntity);
 
         // 카드 관련 하여 사용 내역 반영하기
         CardEntity cardEntity = crr.findById(debitUpdateDTO.getCardId()).get();
-        Long cardUseAsset = cardEntity.getTotalAsset();
-        cardUseAsset = cardUseAsset - debitUpdateDTO.getMinusAsset();
+        Double cardUseAsset = cardEntity.getTotalAsset();
+        cardUseAsset = cardUseAsset - minusAsset;
         cardEntity.setTotalAsset(cardUseAsset);
         // 해당 부분 반영
         crr.save(cardEntity);

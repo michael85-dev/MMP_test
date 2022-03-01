@@ -20,8 +20,8 @@ public class BankSaveDTO {
     private String bankAccount; // 계좌번호
     private String bankMemo; // 메모
 
-    private long totalAsset; // 총 잔액
-    private Double bankRate; // 통장 이자율
+    private double totalAsset; // 총 잔액
+    private double bankRate; // 통장 이자율
     private MultipartFile bankPhoto; // 사진 항목
     private String bankPhotoName;
 

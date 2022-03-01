@@ -42,7 +42,7 @@ public class DebitEntity extends BaseEntity {
     private LocalDateTime calTime;
     private String debitName; //내역명
     private String debitPhotoName; // 영수증
-    private Long minusAsset; // 지출
+    private Double minusAsset; // 지출
     private String debitMemo; // 내역
     private Double debitGet; // 할인
     private Double debitPercent; // 할인율

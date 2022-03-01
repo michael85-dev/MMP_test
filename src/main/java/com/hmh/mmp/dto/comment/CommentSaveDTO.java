@@ -16,8 +16,9 @@ import javax.persistence.ManyToOne;
 public class CommentSaveDTO {
     private String commentWriter;
     private String commentContents;
-    private Integer hate;
-    private Integer like;
+    private int hate;
+    private int like;
+
     private Long boardId;
     private Long memberId;
 

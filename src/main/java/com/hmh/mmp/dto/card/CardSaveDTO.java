@@ -22,6 +22,7 @@ public class CardSaveDTO {
     private String cardTag;
     private MultipartFile cardPhoto;
     private String cardPhotoName;
-    private Long totalAsset;
+    private double totalAsset;
+
     private Long memberId;
 }

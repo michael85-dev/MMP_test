@@ -24,14 +24,14 @@ public class BalanceSaveDTO extends RecoredYMD {
     private LocalDate date; // 날짜? (기록 날짜)
     private String balanceMemo; //  사용 내역 관련 메모
     private String balanceName; // 사용 내역
-    private long plusAsset; // 추가된 금액
-    private long minusAsset; // 지출된 금액
+    private double plusAsset; // 추가된 금액
+    private double minusAsset; // 지출된 금액
     private MultipartFile balancePhoto; // 영수증 관련 사진을 넣어야 하는 것
     private String balancePhotoName;
     private LocalDate calDate;
 
-    private Double balanceGet;
-    private Double balancePercents;
+    private double balanceGet;
+    private double balancePercents;
 
     private double rate;
 

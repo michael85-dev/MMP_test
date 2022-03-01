@@ -39,8 +39,8 @@ public class BalanceEntity extends BaseEntity {
     private LocalDateTime calTime;
     private String balanceMemo;
     private String balanceName;
-    private Long plusAsset;
-    private Long minusAsset;
+    private Double plusAsset;
+    private Double minusAsset;
 
     private Double balanceGet; // 할인액
     private Double balancePercents; // 할인율

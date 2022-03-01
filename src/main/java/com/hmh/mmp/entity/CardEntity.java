@@ -29,7 +29,7 @@ public class CardEntity extends BaseEntity {
     private Integer level;
     private String cardTag;
 
-    private Long totalAsset;
+    private Double totalAsset;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

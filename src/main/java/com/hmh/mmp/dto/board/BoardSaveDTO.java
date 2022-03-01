@@ -19,7 +19,7 @@ public class BoardSaveDTO {
     private String boardContents;
     private String boardTitle;
     private String boardPassword;
-    private Integer boardHits;
+    private int boardHits;
 
     public static BoardSaveDTO toMoveDate(MemberDetailDTO memberDetailDTO) {
         BoardSaveDTO boardSaveDTO = new BoardSaveDTO();

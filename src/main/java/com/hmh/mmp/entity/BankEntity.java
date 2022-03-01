@@ -26,7 +26,7 @@ public class BankEntity extends BaseEntity {
     @Column(length = 1000)
     private String bankMemo;
 
-    private Long totalAsset;
+    private Double totalAsset;
     private Double bankRate;
     private String bankPhotoName;
 
@@ -55,7 +55,7 @@ public class BankEntity extends BaseEntity {
         bankEntity.setMemberEntity(memberEntity);
         bankEntity.setBankName(bankSaveDTO.getBankName());
         bankEntity.setBankMemo(bankSaveDTO.getBankMemo());
-        bankEntity.setTotalAsset(0L);
+        bankEntity.setTotalAsset(0.0);
         bankEntity.setBankPhotoName(bankSaveDTO.getBankPhotoName());
         bankEntity.setBankRate(bankSaveDTO.getBankRate());
 

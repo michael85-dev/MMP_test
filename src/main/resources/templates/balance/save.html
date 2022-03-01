@@ -16,24 +16,43 @@
         <div class="col-1"></div>
         <div class="col-10">
             <form action="/balance/save" method="post" enctype="multipart/form-data" th:object="${bsave}">
-                번호 : <input type="text" th:field="*{cashId}"> <br>
-                날짜 : <input type="date" th:field="*{date}"> <br>
-                내역 : <input type="text" th:field="*{balanceName}"> <br>
-                수입 :
-                <select>
-                    <option disabled>선택하세요</option>
-                    <option value="plusAsset">수입</option>
-                    <option value="minusAsset">지출</option>
-                </select>  <br>
-                할인 :
-                <select>
-                    <option disabled>선택하세요</option>
-                    <option value="balanceGet">할인액</option>
-                    <option value="balancePercents">할인율</option>
-                </select> <br>
-                메모 : <textarea th:field="*{balanceMemo}" rows="5"></textarea> <br>
-                영수증 : <input type="file" th:field="*{balancePhoto}"> <br>
-                <input type="submit" value="전송"><button onclick="bToMain()">돌아가기</button>
+                <fieldset>
+                    <legend>현금 정보 작성</legend>
+                    <p>번호 : <input type="text" th:field="*{cashId}"> </p>
+                    날짜 : <input type="date" th:field="*{date}"> <br>
+                    내역 : <input type="text" th:field="*{balanceName}"> <br>
+                    수입 :
+                    <select>
+                        <option disabled>선택하세요</option>
+                        <option value="plusAsset">수입</option>
+                        <option value="minusAsset">지출</option>
+                    </select>  <br>
+                    할인 :
+                    <select>
+                        <option disabled>선택하세요</option>
+                        <option value="balanceGet">할인액</option>
+                        <optgroup label="할인율" name="balancePercents" value="balancePercents">
+                            <option value="1">1%</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                            <option value="4">4%</option>
+                            <option value="5">5%</option>
+                            <option value="6">6%</option>
+                            <option value="7">7%</option>
+                            <option value="8">8%</option>
+                            <option value="9">9%</option>
+                            <option value="10">10%</option>
+                            <option value="11">11%</option>
+                            <option value="12">12%</option>
+                            <option value="13">13%</option>
+                        </optgroup>
+                    </select> <br>
+                    메모 : <textarea th:field="*{balanceMemo}" rows="5"></textarea> <br>
+                    영수증 : <input type="file" th:field="*{balancePhoto}"> <br>
+                    <input type="submit" value="전송">
+                    <input type="reset" value="다시 작성">
+                    <button onclick="bToMain()">돌아가기</button>
+                </fieldset>
             </form>
         </div>
         <div class="col-1"></div>

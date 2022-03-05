@@ -1,5 +1,6 @@
 package com.hmh.mmp.controller;
 
+import com.hmh.mmp.dto.MainDetailDTO;
 import com.hmh.mmp.dto.account.AccountDetailDTO;
 import com.hmh.mmp.dto.balance.BalanceDetailDTO;
 import com.hmh.mmp.dto.bank.BankDetailDTO;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 
 import static com.hmh.mmp.common.SessionConst.LOGIN_ID;
 
@@ -64,22 +67,35 @@ public class MainController {
         MemberDetailDTO memberDetailDTO = ms.findById(memberId);
         BankDetailDTO bankDetailDTO = bs.findById(memberId);
         CashDetailDTO cashDetailDTO = css.findById(memberId);
+        List<BankDetailDTO> bankDetailDTOList = bs.findAll(memberId);
+        List<CashDetailDTO> cashDetailDTOList = css.findAll(memberId);
+        MainDetailDTO mainDetailDTO = new MainDetailDTO();
+        model.addAttribute("main", mainDetailDTO);
 
         if (select == 1) { // 현금에서 계좌
+            model.addAttribute("select", select);
+            model.addAttribute("cDTO", cashDetailDTO);
+            model.addAttribute("bList", bankDetailDTOList);
 
             return "cash/transfer";
         } else if (select == 2) { // 계좌에서 현금
+            model.addAttribute("bDTO", bankDetailDTO);
+            model.addAttribute("bList", bankDetailDTOList);
 
             return "bank/transfer";
         } else if (select == 3) { // 계좌에서 계좌
+            model.addAttribute("bDTO2", bankDetailDTO);
+            model.addAttribute("bList2", bankDetailDTOList);
 
             return "cash/transfer";
         } else if (select == 4) { // 현금에서 현금
+            model.addAttribute("cDTO2", cashDetailDTO);
+            model.addAttribute("cList2", cashDetailDTOList);
 
             return "bank/transfer";
         } else {
 
-            return null;
+            return "main";
         }
     }
 }

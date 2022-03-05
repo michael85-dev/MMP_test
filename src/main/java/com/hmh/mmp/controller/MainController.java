@@ -62,15 +62,24 @@ public class MainController {
         System.out.println("MainController.select");
         Long memberId = (Long)session.getAttribute("LoginId");
         MemberDetailDTO memberDetailDTO = ms.findById(memberId);
+        BankDetailDTO bankDetailDTO = bs.findById(memberId);
+        CashDetailDTO cashDetailDTO = css.findById(memberId);
 
         if (select == 1) { // 현금에서 계좌
 
+            return "cash/transfer";
         } else if (select == 2) { // 계좌에서 현금
 
+            return "bank/transfer";
         } else if (select == 3) { // 계좌에서 계좌
 
+            return "cash/transfer";
         } else if (select == 4) { // 현금에서 현금
 
+            return "bank/transfer";
+        } else {
+
+            return null;
         }
     }
 }

@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -54,5 +55,22 @@ public class MainController {
     public String stickGraph(Model model) {
 
         return "main";
+    }
+
+    @GetMapping("select")
+    public String select(Model model, @RequestParam("select") Long select, HttpSession session) {
+        System.out.println("MainController.select");
+        Long memberId = (Long)session.getAttribute("LoginId");
+        MemberDetailDTO memberDetailDTO = ms.findById(memberId);
+
+        if (select == 1) { // 현금에서 계좌
+
+        } else if (select == 2) { // 계좌에서 현금
+
+        } else if (select == 3) { // 계좌에서 계좌
+
+        } else if (select == 4) { // 현금에서 현금
+
+        }
     }
 }

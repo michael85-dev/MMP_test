@@ -78,16 +78,19 @@ public class MainController {
 
             return "cash/transfer";
         } else if (select == 2) { // 계좌에서 현금
+            model.addAttribute("select", select);
             model.addAttribute("bDTO", bankDetailDTO);
             model.addAttribute("bList", bankDetailDTOList);
 
             return "bank/transfer";
         } else if (select == 3) { // 계좌에서 계좌
+            model.addAttribute("select", select);
             model.addAttribute("bDTO2", bankDetailDTO);
             model.addAttribute("bList2", bankDetailDTOList);
 
             return "cash/transfer";
         } else if (select == 4) { // 현금에서 현금
+            model.addAttribute("select", select);
             model.addAttribute("cDTO2", cashDetailDTO);
             model.addAttribute("cList2", cashDetailDTOList);
 

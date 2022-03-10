@@ -13,11 +13,11 @@
 <section>
     <div class="row">
         <div></div>
-        <div class="" th:if="${select eq 2}">
+        <div class="" th:if="${select} eq 2">
             <form method="post" action="/select">
                 <input type="hidden" th:value="${select}" name="select" readonly>
                 <input type="hidden" th:value="${bDTO.bankId}" th:field="${main.bankId}">
-                보냄 <input type="text" th:value="${bDTO.bankName}" th:field="${main.bankName}">
+                보냄 <input type="text" th:value="${bDTO.bankName}" th:field="${main.bankName}"> <br>
 
                 받음
                 <select>
@@ -26,17 +26,17 @@
                         <option><c:out value="${c.cashName}"/></option> <!-- 유니크 설정? & 해당 값을 main에 넣어줘야 하는데 -->
                     </c:forEach>
                 </select>
-                <input type="hidden" th:field="${main.cashId}">
+                <input type="hidden" th:field="${main.cashId}"> <br>
                 금액
-                <input type="text" th:field="${main.asset}">
-                <input type="submit" value="확인">
+                <input type="text" th:field="${main.asset}"> <br>
+                <input type="submit" value="확인"><input type="reset" value="다시 작성"> <br>
             </form>
         </div>
-        <div class="" th:if="${select eq 3}">
+        <div class="" th:if="${select} eq 3">
             <form action="/select" method="post">
                 <input type="hidden" th:value="${select}" name="select" readonly>
                 <input type="hidden" th:value="${bDTO2.bankId}" th:field="${main.bankId}">
-                보냄 <input type="text" th:value="${bDTO2.bankName}" th:field="${main.bankName}">
+                보냄 <input type="text" th:value="${bDTO2.bankName}" th:field="${main.bankName}"> <br>
                 받음
                 <select>
                     <option selected>선택하세요</option>
@@ -44,10 +44,10 @@
                         <option><c:out value="${b.bankName}"/></option>
                     </c:forEach>
                 </select>
-                <input type="hidden" th:field="${main.bankId2}">
+                <input type="hidden" th:field="${main.bankId2}"> <br>
                 금액
-                <input type="text" th:field="${main.asset}">
-                <input type="submit" value="확인">
+                <input type="text" th:field="${main.asset}"> <br>
+                <input type="submit" value="확인"><input type="reset" value="다시 작성"> <br>
             </form>
         </div>
         <div></div>

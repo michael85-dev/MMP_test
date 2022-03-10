@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,33 +15,39 @@
         <div></div>
         <div class="" th:if="${select eq 1}">
             <form method="post" action="/select">
+                <input type="hidden" th:value="${select}" name="select" readonly>
                 <input type="hidden" th:value="${cDTO.cashId}" th:field="${main.cashId}">
-                보냄 <input type="text" th:value="${cDTO.cashName}" th:field="${main.cashName}">
+                보냄 <input type="text" th:value="${cDTO.cashName}" th:field="${main.cashName}"> <br>
 
                 받음
                 <select>
-                    <optgroup th:each="b : ${bList}">
-                        <option th:value="@{b.bankName}" th:value="@{b.}">@{b.bankN}</option> <!-- 이걸 어떻게 처리 해야 할까? -->
-                    </optgroup>
+                    <option selected>선택하세요</option>
+                    <c:forEach items="${bList}" var="b">
+                        <option><c:out value="${b.bankName}"/></option>
+                    </c:forEach>
                 </select>
+                <input type="hidden" th:field="${main.bankId}"> <br>
                 금액
-                <input type="text" th:field="${main.asset}">
-                <input type="submit" value="확인">
+                <input type="text" th:field="${main.asset}"> <br>
+                <input type="submit" value="확인"><input type="reset" value="다시 작성">
             </form>
         </div>
         <div class="" th:if="${select eq 4}">
             <form action="/select" method="post">
+                <input type="hidden" th:value="${select}" name="select" readonly>
                 <input type="hidden" th:value="${cDTO2.cashId}" th:field="${main.cashId}">
                 보냄 <input type="text" th:value="${cDTO2.cashName}" th:field="${main.cashName}">
                 받음
                 <select>
-                    <optgroup label="">
-                        <option>선택하세요</option>
-                    </optgroup>
+                    <option selected>선택하세요</option>
+                    <c:forEach items="${cList2}" var="c">
+                        <option><c:out value="${c.cashName}"/></option>
+                    </c:forEach>
                 </select>
+                <input type="hidden" th:field="${main.cashId2}">
                 금액
                 <input type="text" th:field="${main.asset}">
-                <input type="submit" value="확인"
+                <input type="submit" value="확인">
             </form>
         </div>
         <div></div>
@@ -84,4 +92,17 @@
     </div>
 </footer>
 </body>
+<script>
+    // select의 oprion 값 확인
+    const cashId = document.getElementById('cashId'); // 이렇게 해야하나?
+    const cashId2 = document.getElementById('cashId2');
+    const bankId = document.getElementById('bankId');
+    const cashId2 = document.getElementById('bankId2');
+
+    $("selector").find("option").each(function() {
+        alert(this.value); // 이거 대신에 해당 값을 ajax로 넘겨주면 되지 않는가.
+        console.log(cashId);
+
+    });
+</script>
 </html>
